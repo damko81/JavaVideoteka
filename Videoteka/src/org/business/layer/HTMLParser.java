@@ -10,31 +10,42 @@ public class HTMLParser {
 	 public String parseStars(String response){
 				  
 		    String stars = "";
-	        int startIndex = 0;
+		    int startIndex = 0;
 	        int startIndexT = 0;
 	        int endIndex = 0;
+	        int endIndexT = 0;
 			 
-	         Pattern pt = Pattern.compile("\"actor\":");
+			 Pattern pt = Pattern.compile("<script type=\"application/ld\\+json\">");
 		     Matcher mt = pt.matcher(response);
 			 while (mt.find()) {
 				 
 				  startIndexT = mt.end();   
 				  break;
 			 }
-	        
-			 Pattern p = Pattern.compile("\"name\"");
-		     Matcher m = p.matcher(response);
-			 while (m.find(startIndexT)) {
+			 
+			 Pattern p = Pattern.compile("\"actor\":");
+			 Matcher m = p.matcher(response);
+			 while(m.find(startIndexT)) {
 				 
 				  startIndex = m.end();   
 				  break;
+			    	
 			 }
 			 
-			 Pattern px = Pattern.compile("\"");
+			 Pattern px = Pattern.compile("\"name\":");
 			 Matcher mx = px.matcher(response);
 			 while(mx.find(startIndex)) {
 				 
-			      endIndex = mx.end() - 1;
+			      endIndexT = mx.end();
+			      break;
+			    	
+			 }
+			 
+			 Pattern pxx = Pattern.compile("\"");
+			 Matcher mxx = pxx.matcher(response);
+			 while(mxx.find(endIndexT)) {
+				 
+			      endIndex = mx.end();
 			      break;
 			    	
 			 }
@@ -53,21 +64,30 @@ public class HTMLParser {
 		}
 	 
 	    public String parseImageSrc(String response){
-			
-		  
+	    				    	    	   	    	
 			String imageSrc = "";
 	        int startIndex = 0;
+	        int startIndexT = 0;
 	        int endIndex = 0;
 			 
-			 Pattern p = Pattern.compile("image_src");
-		     Matcher m = p.matcher(response);
-			 while (m.find()) {
+			 Pattern pt = Pattern.compile("<script type=\"application/ld\\+json\">");
+		     Matcher mt = pt.matcher(response);
+			 while (mt.find()) {
 				 
-				  startIndex = m.end();   
+				  startIndexT = mt.end();   
 				  break;
 			 }
 			 
-			 Pattern px = Pattern.compile("href=\"");
+			 Pattern p = Pattern.compile("\"image\":");
+			 Matcher m = p.matcher(response);
+			 while(m.find(startIndexT)) {
+				 
+				  startIndex = m.end();   
+				  break;
+			    	
+			 }
+			 
+			 Pattern px = Pattern.compile("\"");
 			 Matcher mx = px.matcher(response);
 			 while(mx.find(startIndex)) {
 				 
@@ -86,25 +106,34 @@ public class HTMLParser {
 		    }
 		   
 			return imageSrc.replace("\n", "");
-			
 		}
 	    
 	    public String parseDescription(String response){
 			
 			  
 			String description = "";
-	        int startIndex = 0;
+			int startIndex = 0;
+	        int startIndexT = 0;
 	        int endIndex = 0;
 			 
-			 Pattern p = Pattern.compile("itemprop=\"description\"");
-		     Matcher m = p.matcher(response);
-			 while (m.find()) {
+			 Pattern pt = Pattern.compile("<script type=\"application/ld\\+json\">");
+		     Matcher mt = pt.matcher(response);
+			 while (mt.find()) {
 				 
-				  startIndex = m.end();   
+				  startIndexT = mt.end();   
 				  break;
 			 }
 			 
-			 Pattern px = Pattern.compile(">");
+			 Pattern p = Pattern.compile("\"description\":");
+			 Matcher m = p.matcher(response);
+			 while(m.find(startIndexT)) {
+				 
+				  startIndex = m.end();   
+				  break;
+			    	
+			 }
+			 
+			 Pattern px = Pattern.compile("\"");
 			 Matcher mx = px.matcher(response);
 			 while(mx.find(startIndex)) {
 				 
@@ -113,7 +142,7 @@ public class HTMLParser {
 			    	
 			 }
 			    	    	   	    	
-	        Pattern py = Pattern.compile("<");
+	        Pattern py = Pattern.compile("\"");
 		    Matcher my = py.matcher(response);
 		    while(my.find(endIndex+1))
 		    {
@@ -130,24 +159,25 @@ public class HTMLParser {
 			
 			  
 			String storyline = "";
-	        int startIndex = 0;
+			int startIndex = 0;
 	        int startIndexT = 0;
 	        int endIndex = 0;
 			 
-	         Pattern pt = Pattern.compile("name=\"description\"");
+			 Pattern pt = Pattern.compile("<script type=\"application/ld\\+json\">");
 		     Matcher mt = pt.matcher(response);
 			 while (mt.find()) {
 				 
 				  startIndexT = mt.end();   
 				  break;
 			 }
-	        
-			 Pattern p = Pattern.compile("\"description\"");
-		     Matcher m = p.matcher(response);
-			 while (m.find(startIndexT)) {
+			 
+			 Pattern p = Pattern.compile("\"description\":");
+			 Matcher m = p.matcher(response);
+			 while(m.find(startIndexT)) {
 				 
 				  startIndex = m.end();   
 				  break;
+			    	
 			 }
 			 
 			 Pattern px = Pattern.compile("\"");
@@ -177,10 +207,11 @@ public class HTMLParser {
 			  
 			String director = "";
 			int startIndex = 0;
-			int startIndexT = 0;
-		    int endIndex = 0;
-		        
-	         Pattern pt = Pattern.compile("\"director\"");
+	        int startIndexT = 0;
+	        int endIndex = 0;
+	        int endIndexT = 0;
+			 
+			 Pattern pt = Pattern.compile("<script type=\"application/ld\\+json\">");
 		     Matcher mt = pt.matcher(response);
 			 while (mt.find()) {
 				 
@@ -188,17 +219,27 @@ public class HTMLParser {
 				  break;
 			 }
 			 
-			 Pattern p = Pattern.compile("\"name\"");
-		     Matcher m = p.matcher(response);
-			 while (m.find(startIndexT)) {
+			 Pattern p = Pattern.compile("\"director\":");
+			 Matcher m = p.matcher(response);
+			 while(m.find(startIndexT)) {
 				 
 				  startIndex = m.end();   
 				  break;
+			    	
 			 }
 			 
-			 Pattern px = Pattern.compile("\"");
+			 Pattern px = Pattern.compile("\"name\":");
 			 Matcher mx = px.matcher(response);
 			 while(mx.find(startIndex)) {
+				 
+			      endIndexT = mx.end();
+			      break;
+			    	
+			 }
+			 
+			 Pattern pxx = Pattern.compile("\"");
+			 Matcher mxx = pxx.matcher(response);
+			 while(mxx.find(endIndexT)) {
 				 
 			      endIndex = mx.end();
 			      break;
@@ -209,7 +250,7 @@ public class HTMLParser {
 		    Matcher my = py.matcher(response);
 		    while(my.find(endIndex+1))
 		    {
-		    	director = response.substring(endIndex,my.start());
+		    	director = response.substring(endIndex+1,my.start());
 		    	break;
 		    	
 		    }
@@ -264,15 +305,25 @@ public class HTMLParser {
 			
 			  
 			String releaseDate = "";
-	        int startIndex = 0;
+			int startIndex = 0;
+	        int startIndexT = 0;
 	        int endIndex = 0;
 			 
-			 Pattern p = Pattern.compile("\"datePublished\"");
-		     Matcher m = p.matcher(response);
-			 while (m.find()) {
+			 Pattern pt = Pattern.compile("<script type=\"application/ld\\+json\">");
+		     Matcher mt = pt.matcher(response);
+			 while (mt.find()) {
+				 
+				  startIndexT = mt.end();   
+				  break;
+			 }
+			 
+			 Pattern p = Pattern.compile("\"datePublished\":");
+			 Matcher m = p.matcher(response);
+			 while(m.find(startIndexT)) {
 				 
 				  startIndex = m.end();   
 				  break;
+			    	
 			 }
 			 
 			 Pattern px = Pattern.compile("\"");
@@ -349,18 +400,28 @@ public class HTMLParser {
 			
 			  
 			String genre = "";
-	        int startIndex = 0;
+			int startIndex = 0;
+	        int startIndexT = 0;
 	        int endIndex = 0;
 			 
-			 Pattern p = Pattern.compile("\"genre\"");
-		     Matcher m = p.matcher(response);
-			 while (m.find()) {
+			 Pattern pt = Pattern.compile("<script type=\"application/ld\\+json\">");
+		     Matcher mt = pt.matcher(response);
+			 while (mt.find()) {
 				 
-				  startIndex = m.end();   
+				  startIndexT = mt.end();   
 				  break;
 			 }
 			 
-			 Pattern px = Pattern.compile("\"");
+			 Pattern p = Pattern.compile("\"genre\":");
+			 Matcher m = p.matcher(response);
+			 while(m.find(startIndexT)) {
+				 
+				  startIndex = m.end();   
+				  break;
+			    	
+			 }
+			 
+			 Pattern px = Pattern.compile("\\[");
 			 Matcher mx = px.matcher(response);
 			 while(mx.find(startIndex)) {
 				 
@@ -369,11 +430,11 @@ public class HTMLParser {
 			    	
 			 }
 			    	    	   	    	
-	        Pattern py = Pattern.compile("\"");
+	        Pattern py = Pattern.compile("\\]");
 		    Matcher my = py.matcher(response);
 		    while(my.find(endIndex+1))
 		    {
-			    genre = response.substring(endIndex+1,my.start());
+		    	genre = response.substring(endIndex+1,my.start());
 		    	break;
 		    	
 		    }
@@ -385,41 +446,42 @@ public class HTMLParser {
 	    public String parseRating(String response){
 			
 			  
-			 String rating = "";
-	         int startIndex = 0;
-	         int startIndexT = 0;
-	         int endIndex = 0;
+			String rating = "";
+			int startIndex = 0;
+	        int startIndexT = 0;
+	        int endIndex = 0;
 			 
-	         Pattern pt = Pattern.compile("\"aggregateRating\"");
+			 Pattern pt = Pattern.compile("<script type=\"application/ld\\+json\">");
 		     Matcher mt = pt.matcher(response);
 			 while (mt.find()) {
 				 
 				  startIndexT = mt.end();   
 				  break;
 			 }
-	         
-			 Pattern p = Pattern.compile("\"ratingValue\"");
-		     Matcher m = p.matcher(response);
-			 while (m.find(startIndexT)) {
+			 
+			 Pattern p = Pattern.compile("\"aggregateRating\":");
+			 Matcher m = p.matcher(response);
+			 while(m.find(startIndexT)) {
 				 
 				  startIndex = m.end();   
 				  break;
+			    	
 			 }
 			 
-			 Pattern px = Pattern.compile(":");
+			 Pattern px = Pattern.compile("ratingValue\":");
 			 Matcher mx = px.matcher(response);
 			 while(mx.find(startIndex)) {
 				 
-			      endIndex = mx.end();
+			      endIndex = mx.end() - 1;
 			      break;
 			    	
 			 }
-			    	    	   	    	
+			 		    	    	   	    	
 	        Pattern py = Pattern.compile("}");
 		    Matcher my = py.matcher(response);
 		    while(my.find(endIndex+1))
 		    {
-			    rating = response.substring(endIndex,my.start());
+		    	rating = response.substring(endIndex+1,my.start());
 		    	break;
 		    	
 		    }

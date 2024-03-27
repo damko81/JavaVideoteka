@@ -106,7 +106,7 @@ public class Main extends JFrame{
 							}
 						
 					} catch (URISyntaxException e1) {
-						// TODO: Auto-generated catch block
+						// TODO Auto-generated catch block
 						e1.printStackTrace();
 						JOptionPane.showMessageDialog(null, "Error: Main.setupPanel.");
 					}

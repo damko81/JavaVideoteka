@@ -181,13 +181,13 @@ public static ArrayList<Film> doRequestDetailFromList(HashMap<String,HashMap<Str
 		 detail.put("director", director);
 		 String storyline = infobar;
 		 detail.put("storyline", storyline);
-		 String description = infobar;
+		 String description = parser.parseDescription(x);
 		 detail.put("description", description);
 		 String stars = parser.parseStars(x);
 		 detail.put("stars", stars);
 		 detail.put("name", movieName);
 		 detail.put("url", urlString);
-		 String imageSrc = ""; //OBSOLETE parser.parseImageSrc(x);	
+		 String imageSrc = parser.parseImageSrc(x);	
 		 detail.put("imageSrc", imageSrc);
 		 
 		 filmDetail.put(movieName, detail);
@@ -210,13 +210,44 @@ public static ArrayList<Film> doRequestDetailFromList(HashMap<String,HashMap<Str
 		        Map.Entry pairs = (Map.Entry)it.next();
 		        
 		        movieRef = doSearchRequestParser((String)pairs.getKey(),"http://www.imdb.com/find/?q=" + pairs.getKey().toString().replace(" ", "+") + "&s=all","http://www.imdb.com/title/",movieRef);
-		      	
+		        movieRef = movieRelDistinct(movieRef); // Pobriše odveène filme.
 		    }
 		    		
 		}
 	
 		return movieRef;	
 	}
+	
+	private static HashMap<String,HashMap<String,String>> movieRelDistinct(HashMap<String,HashMap<String,String>> movieRel){
+
+        HashMap<String,HashMap<String,String>> movieRelDist = new HashMap<String,HashMap<String,String>>();
+
+        for(String i : movieRel.keySet()){
+
+            HashMap<String,String> movieRelDistHS = new HashMap<String,String>();
+            HashMap<String,String> movieRelNoDistHS = new HashMap<String,String>();
+            HashMap<String,String> f = movieRel.get(i);
+            Iterator<?> it = f.entrySet().iterator();
+            while (it.hasNext()) {
+                Map.Entry pairs = (Map.Entry)it.next();
+                // Napolnemo filme z toènim imenom, èe obstaja.
+                if(((String)pairs.getKey()).equals(i)){
+                    movieRelDistHS.put((String)pairs.getKey(),(String)pairs.getValue());
+                }// Sicer napolnemo vse z podobnim imenom.
+                else{
+                    movieRelNoDistHS.put((String)pairs.getKey(),(String)pairs.getValue());
+                }
+            }
+            // Napolnemo vse z podobnim imenom iz movieRelNoDist.
+            if (movieRelDistHS.containsKey(i)){
+                movieRelDist.put(i,movieRelDistHS);
+            }
+            else if(!movieRelNoDistHS.isEmpty()){
+                movieRelDist.put(i,movieRelNoDistHS);
+            }
+        }
+        return movieRelDist;
+    }
 	
 	private static HashMap<String,HashMap<String,String>> doSearchRequestParser(String movieName,String urlString,String prefix,HashMap<String,HashMap<String,String>> movieRel){
 		
