@@ -325,8 +325,7 @@ public class XMLParser {
 			   
 			   String imageSrc = f.getImageSrc();
 			   
-			   final String http = "HTTP:";
-			   final String imdb = "imdb_fb_logo";
+			   final String http = "HTTPS:";
 			   String nameTemp = f.getName().toLowerCase();
 			   String nameFromDiscTemp = f.getNameFromDisc().toLowerCase();
 			   
@@ -336,7 +335,7 @@ public class XMLParser {
 			   nameFromDiscTemp = sp.cleanString(nameFromDiscTemp);
 			   
 			   Pictures pic = new Pictures();
-			   if(imageSrc != null && !imageSrc.equals("") && nameFromDiscTemp.equals(nameTemp) && !imageSrc.contains(imdb) && imageSrc.length() > http.length() && (imageSrc.contains(http) || imageSrc.contains(http.toLowerCase()))){
+			   if(imageSrc != null && !imageSrc.equals("") && (imageSrc.contains(http) || imageSrc.contains(http.toLowerCase()))){
 				   
 				   imageSrc = ServicePersistent.getEncodedStringByteArray(imageSrc);
 				   byte[] im = ServicePersistent.decodeStringToByteArray(imageSrc);
@@ -344,7 +343,7 @@ public class XMLParser {
 				   imageSrc = ServicePersistent.getEncodedStringBufferedImage(bi);
 				   
 			   }
-			   
+			    
 			   attr.setValue(imageSrc);
 			   x.setAttributeNode(attr);
 			   film.appendChild(x);

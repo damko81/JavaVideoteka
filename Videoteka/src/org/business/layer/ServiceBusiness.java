@@ -208,16 +208,15 @@ public static ArrayList<Film> doRequestDetailFromList(HashMap<String,HashMap<Str
 			Iterator<?> it = f.entrySet().iterator();
 		    while (it.hasNext()) {
 		        Map.Entry pairs = (Map.Entry)it.next();
-		        
 		        movieRef = doSearchRequestParser((String)pairs.getKey(),"http://www.imdb.com/find/?q=" + pairs.getKey().toString().replace(" ", "+") + "&s=all","http://www.imdb.com/title/",movieRef);
-		        movieRef = movieRelDistinct(movieRef); // Pobriše odveène filme.
-		    }
-		    		
+		    }		
 		}
-	
+	   
+		movieRef = movieRelDistinct(movieRef); // Pobriše odveène filme
 		return movieRef;	
 	}
 	
+	@SuppressWarnings("rawtypes")
 	private static HashMap<String,HashMap<String,String>> movieRelDistinct(HashMap<String,HashMap<String,String>> movieRel){
 
         HashMap<String,HashMap<String,String>> movieRelDist = new HashMap<String,HashMap<String,String>>();
@@ -238,10 +237,10 @@ public static ArrayList<Film> doRequestDetailFromList(HashMap<String,HashMap<Str
                     movieRelNoDistHS.put((String)pairs.getKey(),(String)pairs.getValue());
                 }
             }
-            // Napolnemo vse z podobnim imenom iz movieRelNoDist.
-            if (movieRelDistHS.containsKey(i)){
+            // Napolnemo vse z enakim imenom iz movieRelDist.
+            if (!movieRelDistHS.isEmpty()){
                 movieRelDist.put(i,movieRelDistHS);
-            }
+            }// Sicer napolnemo vse z podobnim imenom.
             else if(!movieRelNoDistHS.isEmpty()){
                 movieRelDist.put(i,movieRelNoDistHS);
             }

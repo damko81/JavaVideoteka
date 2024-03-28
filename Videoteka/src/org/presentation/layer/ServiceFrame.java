@@ -465,8 +465,8 @@ public class ServiceFrame {
 			descriptionText.setFocusable(false);
 			panel.add(descriptionText);
 			 
-			String path = ServicePersistent.getEncodedStringByteArray(f.getImageSrc());
-			String http = "HTTP:";
+			String path = f.getImageSrc();
+			String http = "HTTPS:";
 			
 			Pictures pic = new Pictures();
 			
