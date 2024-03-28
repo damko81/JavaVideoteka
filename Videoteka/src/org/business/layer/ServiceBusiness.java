@@ -111,7 +111,7 @@ public static ArrayList<Film> doRequestDetailFromList(HashMap<String,HashMap<Str
     
     private static HashMap<String,HashMap<String,String>> doRequestMovieDetail(String movieName,String urlString) throws IOException{
 		
-    	 //urlString = "https://www.imdb.com/title/tt0078748/"; //TEST
+    	 //urlString = "https://www.imdb.com/title/tt28494878/"; // urlString = "https://www.imdb.com/title/tt0078748/"; //TEST
 		 HttpURLConnection httpConn = null;
 		 StringBuilder responseBuilder = new StringBuilder();
 		 String line;
@@ -169,7 +169,7 @@ public static ArrayList<Film> doRequestDetailFromList(HashMap<String,HashMap<Str
 		 
 		 String rating = parser.parseRating(x);
 		 detail.put("rating", rating);
-		 String genre = parser.parseGenre(x);
+		 String genre = parser.parseGenre(x).replace("\"","");
 		 detail.put("genre", genre);
 		 String duration = parser.parseDuration(x);
 		 detail.put("duration", duration);
