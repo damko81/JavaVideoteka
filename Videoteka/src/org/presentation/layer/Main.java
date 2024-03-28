@@ -52,9 +52,22 @@ public class Main extends JFrame{
 	private JTabbedPane tabbedPane;
 	private JTable someTable;
 
+	public static void main(String[] args) throws IOException, Exception {
+		frame = new Main("Videoteka");
+		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frame.turnOnWindow();	
+	}
+	
 	public Main(String title) throws HeadlessException {
 		super(title);
 		aPanel = setupPanel();
+	}
+	
+	public void turnOnWindow()
+	{
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setVisible(true);
+		setSize(1200,800);	
 	}
 	
 	private JPanel setupPanel()
@@ -166,18 +179,4 @@ public class Main extends JFrame{
 		return panel;
 	}
 		
-	public void turnOnWindow()
-	{
-		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		setVisible(true);
-		setSize(1200,800);	
-	}
-	
-	public static void main(String[] args) throws IOException, Exception {
-
-		frame = new Main("Videoteka");
-		frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		frame.turnOnWindow();	
-	
-	}
 }
