@@ -62,7 +62,7 @@ public class Main extends JFrame{
 		super(title);
 		aPanel = setupPanel();
 	}
-	//Test
+	
 	public void turnOnWindow()
 	{
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);

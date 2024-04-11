@@ -319,6 +319,12 @@ public class XMLParser {
 			   attr.setValue(f.getUrl());
 			   x.setAttributeNode(attr);
 			   film.appendChild(x);
+			   //Originalni url slike zaradi Web verzije
+			   x = doc.createElement("imageSrcDec");
+               attr = doc.createAttribute("imageSrcDec");
+               attr.setValue(f.getImageSrc());
+               x.setAttributeNode(attr);
+               film.appendChild(x);
 			   
 			   x = doc.createElement("imageSrc");
 			   attr = doc.createAttribute("imageSrc");
