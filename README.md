@@ -29,6 +29,8 @@ Hiter opis drugih akcij namizne aplikacije Videoteka:
 
 Klik na naslov filma odpre detail filma:
 
+![image](https://github.com/damko81/JavaVideoteka/assets/162964541/1f611cc9-d151-4f13-bf67-9fa939eb021b)
+
 ![image](https://github.com/damko81/JavaVideoteka/assets/162964541/3509c19a-45ba-4db2-be86-b67886257be7)
 
 
