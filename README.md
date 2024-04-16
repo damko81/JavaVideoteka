@@ -33,7 +33,12 @@ Klik na naslov filma odpre detail filma:
 
 ![image](https://github.com/damko81/JavaVideoteka/assets/162964541/3509c19a-45ba-4db2-be86-b67886257be7)
 
-Klik z desno miškino tipko odpre PopUp menu:
+Klik z desno miškino tipko odpre PopUp menu za akcijami, ki so tudi v razdelku akcij v toolbarju:
 
 ![image](https://github.com/damko81/JavaVideoteka/assets/162964541/ea598e6a-35ac-4dd2-89e1-c77a259fdac6)
+
+Akcija Poišči film za iskanje filmov po filtrih:
+
+![image](https://github.com/damko81/JavaVideoteka/assets/162964541/2986c35d-c656-48ec-a505-785921c7b8f3)
+
 
