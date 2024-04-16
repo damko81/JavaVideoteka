@@ -10,3 +10,15 @@ Gremo v toolbarju na Akcije:
 Dobimo seznam vseh možmosti:
 
 ![image](https://github.com/damko81/JavaVideoteka/assets/162964541/8fad1188-5744-4038-8724-ef7dd9a0f7f4)
+
+Izberem akcijo Naloži filme, izberem lokacijo posnetih filmov in z tem se začne nalaganje informacij filmov preko IMDB_ja.
+Parsanje IMDB podatkov je narejeno ročno.
+
+![image](https://github.com/damko81/JavaVideoteka/assets/162964541/4bd2d24f-5fe9-45dd-9935-dbe61f58af99)
+
+Dobimo naložene filme z podatki. Filmi.xml vsebujejo vse prikazane podatke.
+
+![image](https://github.com/damko81/JavaVideoteka/assets/162964541/b7b13f43-04d4-4a20-bc41-27be5b5a8a11)
+
+
+
