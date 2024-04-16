@@ -20,7 +20,15 @@ Dobimo naložene filme z podatki. Filmi.xml vsebujejo vse prikazane podatke.
 
 ![image](https://github.com/damko81/JavaVideoteka/assets/162964541/b7b13f43-04d4-4a20-bc41-27be5b5a8a11)
 
-Datoteka Filmi.xml:
+Napolnjena datoteka Filmi.xml:
+Datoteko Filmi.xml lahko uporabimo kot uvoz vira podatkov za Web API Videoteca.
 
 ![image](https://github.com/damko81/JavaVideoteka/assets/162964541/4abdb8aa-6f38-4f4a-bb0e-6fceee973428)
+
+Hiter opis drugih akcij namizne aplikacije Videoteka:
+
+Klik na naslov filma odpre detail filma:
+
+![image](https://github.com/damko81/JavaVideoteka/assets/162964541/3509c19a-45ba-4db2-be86-b67886257be7)
+
 
