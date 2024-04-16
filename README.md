@@ -41,4 +41,9 @@ Akcija Poišči film za iskanje filmov po filtrih:
 
 ![image](https://github.com/damko81/JavaVideoteka/assets/162964541/2986c35d-c656-48ec-a505-785921c7b8f3)
 
+Akcija Dodaj filem:
+
+![image](https://github.com/damko81/JavaVideoteka/assets/162964541/eb4c63f8-510a-4d24-b862-11a5b452ad45)
+
+
 
