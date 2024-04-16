@@ -20,5 +20,7 @@ Dobimo naložene filme z podatki. Filmi.xml vsebujejo vse prikazane podatke.
 
 ![image](https://github.com/damko81/JavaVideoteka/assets/162964541/b7b13f43-04d4-4a20-bc41-27be5b5a8a11)
 
+Datoteka Filmi.xml:
 
+![image](https://github.com/damko81/JavaVideoteka/assets/162964541/4abdb8aa-6f38-4f4a-bb0e-6fceee973428)
 
